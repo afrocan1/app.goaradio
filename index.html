@@ -23,6 +23,131 @@
   <!-- Favicon -->
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
+  <style>
+    /* ── GLOBAL: black background, white text ── */
+    body {
+      background-color: #0a0a0a !important;
+      color: #ffffff !important;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background-color: #0a0a0adc !important;
+      border-bottom: 1px solid #2a2a2a !important;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link {
+      color: #ffffff !important;
+    }
+
+    .navbar-expand-lg .navbar-nav .nav-link:hover {
+      color: #d4a017 !important;
+    }
+
+    /* hamburger bars */
+    .toggle-bar,
+    .toggle-bar::before,
+    .toggle-bar::after {
+      border-top-color: #ffffff !important;
+      background: #ffffff !important;
+    }
+
+    /* ── BANNER SECTION ── */
+    .banner_section {
+      background-color: #0a0a0a;
+    }
+
+    /* remove the yellow-dot background image */
+    .banner_section::before {
+      display: none;
+    }
+
+    /* typed rotating text */
+    .banner_section .banner_text .type-wrap span,
+    .typed-cursor {
+      color: #d4a017 !important;
+    }
+
+    /* h1 normal text */
+    .banner_section .banner_text h1 {
+      color: #ffffff !important;
+    }
+
+    /* h1 highlighted span */
+    .banner_section .banner_text h1 span {
+      color: #d4a017 !important;
+    }
+
+    /* body paragraph text */
+    .banner_section .banner_text p,
+    .banner_section .used_app p {
+      color: #cccccc !important;
+    }
+
+    /* "Growing Fast" heading */
+    .banner_section .used_app h3 {
+      color: #ffffff !important;
+    }
+
+    /* ── DOWNLOAD BUTTONS: black bg, gold border, gold-tinted images ── */
+    .banner_section .app_btn li a {
+      background-color: #111111 !important;
+      border: 1px solid #d4a017 !important;
+    }
+
+    .banner_section .app_btn li a img {
+      filter: brightness(0) saturate(100%) invert(68%) sepia(60%) saturate(700%) hue-rotate(5deg) brightness(95%) contrast(95%);
+    }
+
+    /* ── SPIN BLOCK ── */
+    .spinBlock::before {
+      background-color: #333333 !important;
+    }
+
+    .spinBlock .spin_box {
+      background-color: #1a1a1a !important;
+      border: 1px solid #d4a017;
+    }
+
+    .spinBlock .spin_box .downsign {
+      background-color: #d4a017 !important;
+      color: #000000 !important;
+    }
+
+    .spinBlock .star img {
+      filter: brightness(0) saturate(100%) invert(68%) sepia(60%) saturate(700%) hue-rotate(5deg) brightness(95%);
+    }
+
+    /* ── TITLE BADGE ── */
+    .title_badge {
+      background-color: #d4a017 !important;
+      color: #000000 !important;
+    }
+
+    /* ── PRELOADER ── */
+    #preloader {
+      background-color: #0a0a0a !important;
+    }
+
+    #loader {
+      border-top-color: #d4a017 !important;
+    }
+
+    #loader:before {
+      border-top-color: #ffffff !important;
+    }
+
+    #loader:after {
+      border-top-color: #444444 !important;
+    }
+
+    /* ── GO TOP BUTTON ── */
+    .go_top span {
+      background-color: #d4a017 !important;
+      color: #000000 !important;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -120,7 +245,7 @@
         <!-- banner image start -->
         <div class="col-lg-6 col-md-12">
           <div class="banner_slider">
-            <img src="images/downloadScreen.png" alt="image" style="max-width: 260px; width: 100%; height: auto; display: block; margin: 0 auto;">
+            <img src="images/bannerScreen.png" alt="image" style="max-width: 260px; width: 100%; height: auto; display: block; margin: 0 auto;">
           </div>
         </div>
         <!-- banner image end -->
