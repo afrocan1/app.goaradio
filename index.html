@@ -232,9 +232,17 @@
           </div>
 
           <!-- growing fast text -->
-          <div class="used_app">
+          <div class="used_app" id="invite-msg-block">
             <h3>Growing Fast</h3>
             <p>Listeners earn. Artists earn. <br> Everyone wins on Goaradio.</p>
+          </div>
+
+          <!-- referral banner (hidden by default) -->
+          <div id="invite-banner" style="display:none; background:#1a1a1a; border:1px solid #d4a017; border-radius:12px; padding:14px 20px; margin-bottom:20px;">
+            <p style="margin:0; color:#ffffff; font-size:15px;">
+              🎵 <span id="invite-msg">Someone</span> invited you to Goaradio!<br>
+              <span style="color:#cccccc; font-size:13px;">Download the app — your invite will be linked automatically.</span>
+            </p>
           </div>
 
           <a href="https://github.com/afrocan1/app.goaradio/releases/download/v1.0/goaradio.01.5.apk" 
@@ -329,18 +337,37 @@
     });
   </script>
 
-  <script>// Store referrer from invite link so it survives the download + install flow
-(function () {
-  const params = new URLSearchParams(window.location.search);
-  const ref    = params.get('ref');
-  if (ref) {
+  <script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const ref    = params.get('ref');
+    if (!ref) return;
+
+    // Persist so it survives the download + install flow
     localStorage.setItem('goa_referrer_uid', ref);
-    // Optional: show a personalised message
-    const msg = document.getElementById('invite-msg');
-    if (msg) msg.textContent = 'Someone invited you to Goaradio. Download the app to get started.';
-  }
-})();
-</script>
+
+    // Show the invite banner
+    const banner = document.getElementById('invite-banner');
+    if (banner) banner.style.display = 'block';
+
+    // Try to fetch the referrer's display name from your backend
+    fetch('https://backend-qxtb.onrender.com/invite/referrer/' + encodeURIComponent(ref))
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(data) {
+        const msg = document.getElementById('invite-msg');
+        if (!msg) return;
+        if (data && data.displayName) {
+          msg.textContent = data.displayName;
+        } else {
+          msg.textContent = 'A friend';
+        }
+      })
+      .catch(function() {
+        const msg = document.getElementById('invite-msg');
+        if (msg) msg.textContent = 'A friend';
+      });
+  })();
+  </script>
 
 </body>
 
