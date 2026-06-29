@@ -329,6 +329,19 @@
     });
   </script>
 
+  <script>// Store referrer from invite link so it survives the download + install flow
+(function () {
+  const params = new URLSearchParams(window.location.search);
+  const ref    = params.get('ref');
+  if (ref) {
+    localStorage.setItem('goa_referrer_uid', ref);
+    // Optional: show a personalised message
+    const msg = document.getElementById('invite-msg');
+    if (msg) msg.textContent = 'Someone invited you to Goaradio. Download the app to get started.';
+  }
+})();
+</script>
+
 </body>
 
 </html>
